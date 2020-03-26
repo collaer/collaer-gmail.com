@@ -64,17 +64,17 @@ var processData=function(data) {
 	if(! countries.includes(d.country)) {
 	  countries.push(d.country);
 	  $("#country")
-   		.append('<option val="' + d.country + '">'+ d.country + '</option>')
-   		.selectpicker('refresh');
+   		.append('<option val="' + d.country + '">'+ d.country + '</option>');
 	}
 	if(! categories.includes(d.category)) {
 	  categories.push(d.category);
 	  $("#category")
-   		.append('<option val="' + d.category + '">'+ d.category + '</option>')
-   		.selectpicker('refresh');
+   		.append('<option val="' + d.category + '">'+ d.category + '</option>');
 	}
   });
 	
+	$("#country").selectpicker('refresh');
+	$("#category").selectpicker('refresh');
 	
 };
 
