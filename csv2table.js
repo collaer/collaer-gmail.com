@@ -2,6 +2,11 @@ var csv;
 var countries;
 var categories;
 
+String.prototype.trunc = String.prototype.trunc ||
+      function(n){
+          return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
+      };
+
 var processData=function(data) {
   csv = $.csv.toObjects(data);
 	
@@ -19,6 +24,8 @@ var processData=function(data) {
       showColumns: true,
       showFullscreen: true,
       showFooter: true,
+      detailViewByClick: true,
+      detailViewIcon: true,
       columns: [{
         field: 'organization',
         title: 'Organization',
@@ -46,7 +53,9 @@ var processData=function(data) {
         cardVisible: true,
         width: '40',
         widthUnit: '%',
-        visible: true
+        visible: true,
+	formatter: descriptionFormatter,
+	detailFormatter: detailDescrptionFormatter
       }, {
         field: 'url2',
 	title: 'Additional link',
@@ -119,6 +128,14 @@ var TotalLabelFormater = function(data) {
 var TotalFormater = function(data) {
     return data.length;
  };
+
+var descriptionFormatter  = function (value, row, index) {
+	return value.trunc(133);
+};
+
+var detailDescrptionFormatter  = function (value, row, index) {
+	return value;
+};
 
 $(document).ready(function() {
   $.ajax({
