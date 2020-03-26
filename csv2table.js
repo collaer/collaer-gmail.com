@@ -97,14 +97,16 @@ var processData=function(data) {
 	
 	$("#country").selectpicker('refresh');
 	$("#category").selectpicker('refresh');
-	
+
 	$( "#country" ).change(function() {
 		refreshFilter();
 	});
 
 	$( "#category" ).change(function() {
-	 	refreshFilter();
+		refreshFilter();
 	});
+	
+	refreshFilter();
 };
 
 var refreshFilter = function() {
