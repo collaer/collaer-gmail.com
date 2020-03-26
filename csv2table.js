@@ -34,7 +34,7 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true,
         formatter: linkAccount,
-	footerFormatter: TotalLabelFormater,
+	footerFormatter: TotalFormater,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'category',
@@ -42,7 +42,7 @@ var processData=function(data) {
         width: '20',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: TotalFormater,
+	footerFormatter: CategoriesFormater,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'country',
@@ -50,6 +50,7 @@ var processData=function(data) {
         width: '10',
         widthUnit: '%',
         sortable: true,
+	footerFormatter: CountriesFormater,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'description',
@@ -133,12 +134,25 @@ var linkAccount = function (value, row, index) {
 		'</a>'].join('');
 };
 
-var TotalLabelFormater = function(data) {
-    return 'Total';
+var TotalFormater = function(data) {
+    return 'Total ' + data.length;
 };
 
-var TotalFormater = function(data) {
-    return data.length;
+var CountriesFormater = function(data) {
+    return countries.length + ' countries';
+ };
+
+var CategoriesFormater = function(data) {
+    var currentData = $("#datatable").bootstrapTable('getData');
+    var cata = {};
+    $.each(currentData, function(i, record) { 
+	   cata[record.category] += 1;
+    });
+    var text = "";
+    $.each(cata, function(i, nb) { 
+	    text += (text ? "<br />": "") + i + ": " + nb;
+    });
+    return text;
  };
 
 var descriptionFormatter  = function (value, row, index) {
