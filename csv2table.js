@@ -64,13 +64,13 @@ var processData=function(data) {
 	if(! countries.includes(d.country)) {
 	  countries.push(d.country);
 	  $("#country")
-   		.html('<option val="' + d.country + '">'+ d.country + '</option>')
+   		.append('<option val="' + d.country + '">'+ d.country + '</option>')
    		.selectpicker('refresh');
 	}
 	if(! categories.includes(d.category)) {
 	  categories.push(d.category);
 	  $("#category")
-   		.html('<option val="' + d.category + '">'+ d.category + '</option>')
+   		.append('<option val="' + d.category + '">'+ d.category + '</option>')
    		.selectpicker('refresh');
 	}
   });
