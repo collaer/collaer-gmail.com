@@ -19,7 +19,7 @@ var processData=function(data) {
       toolbar: "#toolbar-table",
       showExport: true,
       exportDataType: "all",
-      showToggle: true,
+      //showToggle: true,
       showColumns: true,
       showFullscreen: true,
       showFooter: true,
@@ -56,13 +56,17 @@ var processData=function(data) {
         //visible: true,
 	sortable: false,
 	formatter: descriptionFormatter,
-	detailFormatter: detailDescrptionFormatter
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'url2',
 	title: 'Additional link',
         width: '10',
         widthUnit: '%',
-        title: 'url'
+      }, {
+        field: 'url',
+	title: 'url',
+        width: '0.1',
+        widthUnit: '%',
       }],
       data: csv
   });
@@ -134,11 +138,7 @@ var descriptionFormatter  = function (value, row, index) {
 	return value.trunc(133);
 };
 
-var detailDescrptionFormatter  = function (value, row, index) {
-	console.log("formatin");
-	console.log(value);
-	console.log(row);
-	console.log(row.description);
+var detailDescriptionFormatter  = function (value, row, index) {
 	return row.description;
 };
 
