@@ -13,26 +13,37 @@ var processData=function(data) {
       showToggle: true,
       showColumns: true,
       showFullscreen: true,
+      showFooter: true,
       columns: [{
         field: 'organization',
         title: 'Organization',
+        width: '25',
+        widthUnit: '%',
         sortable: true
       }, {
         field: 'category',
         title: 'Category',
+        width: '25',
+        widthUnit: '%',
         sortable: true
       }, {
         field: 'country',
         title: 'Country',
+        width: '10',
+        widthUnit: '%',
         sortable: true
       }, {
         field: 'url',
-        title: 'Url'
+        width: '15',
+        widthUnit: '%',
+        title: 'url'
       }, {
         field: 'description',
         title: 'Description',
         cardVisible: true,
-        visible: false
+        width: '35',
+        widthUnit: '%',
+        visible: true
       }],
       data: csv
   })
