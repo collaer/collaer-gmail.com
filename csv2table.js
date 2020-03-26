@@ -34,17 +34,18 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true
       }, {
-        field: 'url',
-        width: '10',
-        widthUnit: '%',
-        title: 'url'
-      }, {
         field: 'description',
         title: 'Description',
         cardVisible: true,
         width: '40',
         widthUnit: '%',
         visible: true
+      }, {
+        field: 'url2',
+	title: 'Additional link',
+        width: '10',
+        widthUnit: '%',
+        title: 'url'
       }],
       data: csv
   })
