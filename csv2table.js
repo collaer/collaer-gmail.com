@@ -6,21 +6,33 @@ var processData=function(data) {
   $('#datatable').bootstrapTable({
       pagination: true,
       search: true,
+			toggle: "table",
+			pagination: true,
+			toolbar: "#toolbar-table",
+			show-export: true,
+			show-toggle: true,
+			show-columns: true,
+			show-fullscreen: true,
       columns: [{
         field: 'organization',
-        title: 'Organization'
+        title: 'Organization',
+        sortable: true
       }, {
         field: 'category',
-        title: 'Category'
+        title: 'Category',
+        sortable: true
       }, {
         field: 'country',
-        title: 'Country'
+        title: 'Country',
+        sortable: true
       }, {
         field: 'url',
         title: 'Url'
       }, {
         field: 'description',
-        title: 'Description'
+        title: 'Description',
+        cardVisible: true,
+        visible: false
       }],
       data: csv
   })
