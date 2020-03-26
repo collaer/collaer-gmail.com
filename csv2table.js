@@ -1,7 +1,11 @@
 var csv;
+var countries;
+var categories;
 
 var processData=function(data) {
   csv = $.csv.toObjects(data);
+	
+	
   
   $('#datatable').bootstrapTable({
       pagination: true,
@@ -10,6 +14,7 @@ var processData=function(data) {
       pagination: true,
       toolbar: "#toolbar-table",
       showExport: true,
+      exportDataType: "all",
       showToggle: true,
       showColumns: true,
       showFullscreen: true,
@@ -50,8 +55,27 @@ var processData=function(data) {
         title: 'url'
       }],
       data: csv
-  })
+  });
   
+  countries = [];
+  categories = [];
+  $.each(csv, function(i,d) { 
+  	console.log(d);
+	if(! countries.includes(d.country)) {
+	  countries.push(d.country);
+	  $("#country")
+   		.html('<option val="' + d.country + '">'+ d.country + '</option>')
+   		.selectpicker('refresh');
+	}
+	if(! categories.includes(d.category)) {
+	  categories.push(d.category);
+	  $("#category")
+   		.html('<option val="' + d.category + '">'+ d.category + '</option>')
+   		.selectpicker('refresh');
+	}
+  });
+	
+	
 };
 
 var linkAccount = function (value, row, index) {
