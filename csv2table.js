@@ -4,24 +4,26 @@ var processData=function(data) {
   csv = $.csv.toObjects(data);
   
   $('#datatable').bootstrapTable({
-  columns: [{
-    field: 'organization',
-    title: 'Organization'
-  }, {
-    field: 'category',
-    title: 'Category'
-  }, {
-    field: 'country',
-    title: 'Country'
-  }, {
-    field: 'url',
-    title: 'Url'
-  }, {
-    field: 'description',
-    title: 'Description'
-  }],
-  data: csv
-})
+      pagination: true,
+      search: true,
+      columns: [{
+        field: 'organization',
+        title: 'Organization'
+      }, {
+        field: 'category',
+        title: 'Category'
+      }, {
+        field: 'country',
+        title: 'Country'
+      }, {
+        field: 'url',
+        title: 'Url'
+      }, {
+        field: 'description',
+        title: 'Description'
+      }],
+      data: csv
+  })
   
 };
 
