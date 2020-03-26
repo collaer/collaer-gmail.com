@@ -60,7 +60,7 @@ var processData=function(data) {
   countries = [];
   categories = [];
   $.each(csv, function(i,d) { 
-  	console.log(d);
+  	//console.log(d);
 	if(! countries.includes(d.country)) {
 	  countries.push(d.country);
 	  $("#country")
