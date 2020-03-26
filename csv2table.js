@@ -1,6 +1,6 @@
 var csv;
-var countries;
-var categories;
+var countries = [];
+var categories = [];
 
 String.prototype.trunc = String.prototype.trunc ||
       function(n){
