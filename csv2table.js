@@ -1,21 +1,37 @@
-$('#table').bootstrapTable({
+var csv;
+
+var processData=function(data) {
+  csv = $.csv.toObjects(data);
+  
+  $('#table').bootstrapTable({
   columns: [{
-    field: 'id',
-    title: 'Item ID'
+    field: 'organization',
+    title: 'Organization'
   }, {
-    field: 'name',
-    title: 'Item Name'
+    field: 'category',
+    title: 'Category'
   }, {
-    field: 'price',
-    title: 'Item Price'
+    field: 'country',
+    title: 'Country'
+  }, {
+    field: 'url',
+    title: 'Url'
+  }, {
+    field: 'description',
+    title: 'Description'
   }],
-  data: [{
-    id: 1,
-    name: 'Item 1',
-    price: '$1'
-  }, {
-    id: 2,
-    name: 'Item 2',
-    price: '$2'
-  }]
+  data: csv
 })
+  
+};
+
+$(document).ready(function() {
+  $.ajax({
+        type: "GET",
+        url: "data/sample.csv",
+        dataType: "text",
+        success: function(data) {
+          processData(data);
+        }
+     });
+});
