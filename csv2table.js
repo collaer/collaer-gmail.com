@@ -135,7 +135,7 @@ var linkAccount = function (value, row, index) {
 };
 
 var TotalFormater = function(data) {
-    return 'Total ' + data.length;
+    return 'Total: ' + data.length;
 };
 
 var CountriesFormater = function(data) {
@@ -146,7 +146,7 @@ var CategoriesFormater = function(data) {
     var currentData = $("#datatable").bootstrapTable('getData');
     var cata = {};
     $.each(currentData, function(i, record) { 
-	   cata[record.category] += 1;
+	   cata[record.category] = (cata[record.category] ? cata[record.category] + 1 : 1);
     });
     var text = "";
     $.each(cata, function(i, nb) { 
