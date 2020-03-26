@@ -17,13 +17,13 @@ var processData=function(data) {
       columns: [{
         field: 'organization',
         title: 'Organization',
-        width: '25',
+        width: '20',
         widthUnit: '%',
         sortable: true
       }, {
         field: 'category',
         title: 'Category',
-        width: '25',
+        width: '20',
         widthUnit: '%',
         sortable: true
       }, {
@@ -34,14 +34,14 @@ var processData=function(data) {
         sortable: true
       }, {
         field: 'url',
-        width: '15',
+        width: '10',
         widthUnit: '%',
         title: 'url'
       }, {
         field: 'description',
         title: 'Description',
         cardVisible: true,
-        width: '35',
+        width: '40',
         widthUnit: '%',
         visible: true
       }],
