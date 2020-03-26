@@ -35,7 +35,46 @@
 
 </head>
 <body>
- 
+	<div id="toolbar-table" class="select">
+ <div class="input-group input-group-sm mb-2">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_ISO_A3">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Region" data-content="Corresponds to the REGION code from Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Country &nbsp; <a href="#" title="Country Chart" id="country_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				</label>
+			  </div>
+			  <select class="custom-select" id="ISO_A3">
+				<option selected value="0" data-att-1="ISO_A3" data-val-1="">Todos</option>
+				<option value="ARG" data-att-1="ISO_A3" data-val-1="ARG">Argentina</option>
+				<option value="BHS" data-att-1="ISO_A3" data-val-1="BHS">Bahamas</option>
+				<option value="BRB" data-att-1="ISO_A3" data-val-1="BRB">Barbados</option>
+				<option value="BLZ" data-att-1="ISO_A3" data-val-1="BLZ">Belize</option>
+				<option value="BOL" data-att-1="ISO_A3" data-val-1="BOL">Bolivia</option>
+				<option value="BRA" data-att-1="ISO_A3" data-val-1="BRA">Brazil</option>
+				<option value="CHL" data-att-1="ISO_A3" data-val-1="CHL">Chile</option>
+				<option value="COL" data-att-1="ISO_A3" data-val-1="COL">Colombia</option>
+				<option value="CRI" data-att-1="ISO_A3" data-val-1="CRI">Costa Rica</option>
+				<option value="DOM" data-att-1="ISO_A3" data-val-1="DOM">Dominican Republic</option>
+				<option value="ECU" data-att-1="ISO_A3" data-val-1="ECU">Ecuador</option>
+				<option value="SLV" data-att-1="ISO_A3" data-val-1="SLV">El Salvador</option>
+				<option value="GTM" data-att-1="ISO_A3" data-val-1="GTM">Guatemala</option>
+				<option value="GUY" data-att-1="ISO_A3" data-val-1="GUY">Guyana</option>
+				<option value="HTI" data-att-1="ISO_A3" data-val-1="HTI">Haiti</option>
+				<option value="HND" data-att-1="ISO_A3" data-val-1="HND">Honduras</option>
+				<option value="JAM" data-att-1="ISO_A3" data-val-1="JAM">Jamaica</option>
+				<option value="MEX" data-att-1="ISO_A3" data-val-1="MEX">Mexico</option>
+				<option value="NIC" data-att-1="ISO_A3" data-val-1="NIC">Nicaragua</option>
+				<option value="PAN" data-att-1="ISO_A3" data-val-1="PAN">Panama</option>
+				<option value="PRY" data-att-1="ISO_A3" data-val-1="PRY">Paraguay</option>
+				<option value="PER" data-att-1="ISO_A3" data-val-1="PER">Peru</option>
+				<option value="REG" data-att-1="ISO_A3" data-val-1="REG">Regional & Reg. support</option>
+				<option value="SUR" data-att-1="ISO_A3" data-val-1="SUR">Suriname</option>
+				<option value="TTO" data-att-1="ISO_A3" data-val-1="TTO">Trinidad and Tobago</option>
+				<option value="URY" data-att-1="ISO_A3" data-val-1="URY">Uruguay</option>
+			  </select>
+			</div>
+	</div>
+	
 	<table id="datatable"></table>
 
 <script src="./csv2table.js"></script>
