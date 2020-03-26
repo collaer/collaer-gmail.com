@@ -15,7 +15,6 @@ var processData=function(data) {
   $('#datatable').bootstrapTable({
       pagination: true,
       search: true,
-      //toggle: "table",
       pagination: true,
       toolbar: "#toolbar-table",
       showExport: true,
@@ -24,6 +23,7 @@ var processData=function(data) {
       showColumns: true,
       showFullscreen: true,
       showFooter: true,
+      detailView: true,
       detailViewByClick: true,
       detailViewIcon: true,
       columns: [{
