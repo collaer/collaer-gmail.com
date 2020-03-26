@@ -54,7 +54,7 @@ var processData=function(data) {
 
 var linkAccount = function (value, row, index) {
 		return [
-				'<a href="',
+				'<a href="http://',
 				row.url,
 				'" title="Open webpage of ',
 				row.organization,
