@@ -15,7 +15,7 @@ var processData=function(data) {
   $('#datatable').bootstrapTable({
       pagination: true,
       search: true,
-      toggle: "table",
+      //toggle: "table",
       pagination: true,
       toolbar: "#toolbar-table",
       showExport: true,
@@ -50,10 +50,11 @@ var processData=function(data) {
       }, {
         field: 'description',
         title: 'Description',
-        cardVisible: true,
+        //cardVisible: true,
         width: '40',
         widthUnit: '%',
-        visible: true,
+        //visible: true,
+	sortable: false,
 	formatter: descriptionFormatter,
 	detailFormatter: detailDescrptionFormatter
       }, {
@@ -95,8 +96,8 @@ var processData=function(data) {
 };
 
 var refreshFilter = function() {
-	console.log($("#country").val());
-	console.log($("#category").val());
+	//console.log($("#country").val());
+	//console.log($("#category").val());
 	var country = $("#country").val();
 	var category = $("#category").val();
 	filters = {};
@@ -107,7 +108,7 @@ var refreshFilter = function() {
 		filters["category"] = category;
 	};
 	$('#datatable').bootstrapTable('filterBy', filters);
-	console.log(filters);
+	//console.log(filters);
 };
 
 var linkAccount = function (value, row, index) {
@@ -134,8 +135,10 @@ var descriptionFormatter  = function (value, row, index) {
 };
 
 var detailDescrptionFormatter  = function (value, row, index) {
+	console.log("formatin");
 	console.log(value);
 	console.log(row);
+	console.log(row.description);
 	return row.description;
 };
 
