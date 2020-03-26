@@ -19,7 +19,8 @@ var processData=function(data) {
         title: 'Organization',
         width: '20',
         widthUnit: '%',
-        sortable: true
+        sortable: true,
+        formatter: linkAccount
       }, {
         field: 'category',
         title: 'Category',
@@ -49,6 +50,17 @@ var processData=function(data) {
   })
   
 };
+
+var linkAccount = function (value, row, index) {
+		return [
+				'<a href="',
+				row.url,
+				'" title="Open webpage of ',
+				row.organization,
+				' in antoher window." target="_blank">',
+				value,
+				'</a>'].join('');
+	};
 
 $(document).ready(function() {
   $.ajax({
