@@ -21,7 +21,7 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true,
         formatter: linkAccount,
-	footerFormatter: TotalLabelFormaterTotalFormater
+	footerFormatter: TotalLabelFormater
       }, {
         field: 'category',
         title: 'Category',
