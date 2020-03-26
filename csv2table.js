@@ -76,6 +76,24 @@ var processData=function(data) {
 	$("#country").selectpicker('refresh');
 	$("#category").selectpicker('refresh');
 	
+	$( "#country" ).change(function() {
+		refreshFilter();
+	});
+
+	$( "#category" ).change(function() {
+	 	refreshFilter();
+	});
+};
+
+var refreshFilter = function() {
+	console.log($("#country").val());
+	console.log($("#category").val());
+	var country = $("#country").val();
+	var category = $("#category").val();
+	filters = {};
+	filters = (country != 0 ? filters : filters["country"] = country);
+	filters = (category != 0 ? filters : filters["category"] = category);
+	$('#datatable').bootstrapTable('filterBy', filters);
 };
 
 var linkAccount = function (value, row, index) {
