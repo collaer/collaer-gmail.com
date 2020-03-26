@@ -94,6 +94,7 @@ var refreshFilter = function() {
 	filters = (country != 0 ? filters : filters["country"] = country);
 	filters = (category != 0 ? filters : filters["category"] = category);
 	$('#datatable').bootstrapTable('filterBy', filters);
+	console.log(filters);
 };
 
 var linkAccount = function (value, row, index) {
