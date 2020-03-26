@@ -20,13 +20,15 @@ var processData=function(data) {
         width: '20',
         widthUnit: '%',
         sortable: true,
-        formatter: linkAccount
+        formatter: linkAccount,
+	footerFormatter: TotalLabelFormaterTotalFormater
       }, {
         field: 'category',
         title: 'Category',
         width: '20',
         widthUnit: '%',
-        sortable: true
+        sortable: true,
+	footerFormatter: TotalFormater
       }, {
         field: 'country',
         title: 'Country',
@@ -53,15 +55,23 @@ var processData=function(data) {
 };
 
 var linkAccount = function (value, row, index) {
-		return [
-				'<a href="http://',
-				row.url,
-				'" title="Open webpage of ',
-				row.organization,
-				' in antoher window." target="_blank">',
-				value,
-				'</a>'].join('');
-	};
+	return [
+		'<a href="http://',
+		row.url,
+		'" title="Open webpage of ',
+		row.organization,
+		' in antoher window." target="_blank">',
+		value,
+		'</a>'].join('');
+};
+
+var TotalLabelFormater = function(data) {
+    return 'Total';
+};
+
+var TotalFormater = function(data) {
+    return data.length;
+ };
 
 $(document).ready(function() {
   $.ajax({
