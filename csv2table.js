@@ -67,6 +67,7 @@ var processData=function(data) {
 	title: 'url',
         width: '0.1',
         widthUnit: '%',
+	visible: false
       }],
       data: csv
   });
