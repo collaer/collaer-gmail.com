@@ -3,7 +3,7 @@ var csv;
 var processData=function(data) {
   csv = $.csv.toObjects(data);
   
-  $('#table').bootstrapTable({
+  $('#datatable').bootstrapTable({
   columns: [{
     field: 'organization',
     title: 'Organization'
