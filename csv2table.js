@@ -152,7 +152,7 @@ var CategoriesFormater = function(data) {
     });
     var text = "";
     $.each(cata, function(i, nb) { 
-	    text += (text ? "<br />": "") + i.trunc(33) + ": " + nb;
+	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });
     return text;
  };
