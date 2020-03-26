@@ -91,8 +91,12 @@ var refreshFilter = function() {
 	var country = $("#country").val();
 	var category = $("#category").val();
 	filters = {};
-	filters = (country != 0 ? filters : filters["country"] = country);
-	filters = (category != 0 ? filters : filters["category"] = category);
+	if (country != 0) {
+		filters["country"] = country;
+	};
+	if (category != 0) {
+		filters["category"] = category;
+	};
 	$('#datatable').bootstrapTable('filterBy', filters);
 	console.log(filters);
 };
