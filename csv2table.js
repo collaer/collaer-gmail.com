@@ -26,6 +26,7 @@ var processData=function(data) {
       detailView: true,
       detailViewByClick: true,
       detailViewIcon: true,
+      detailFormatter: detailDescriptionFormatter,
       columns: [{
         field: 'organization',
         title: 'Organization',
@@ -33,20 +34,23 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true,
         formatter: linkAccount,
-	footerFormatter: TotalLabelFormater
+	footerFormatter: TotalLabelFormater,
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'category',
         title: 'Category',
         width: '20',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: TotalFormater
+	footerFormatter: TotalFormater,
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'country',
         title: 'Country',
         width: '10',
         widthUnit: '%',
-        sortable: true
+        sortable: true,
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'description',
         title: 'Description',
@@ -62,12 +66,14 @@ var processData=function(data) {
 	title: 'Additional link',
         width: '10',
         widthUnit: '%',
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'url',
 	title: 'url',
         width: '0.1',
         widthUnit: '%',
-	visible: false
+	visible: false,
+	detailFormatter: detailDescriptionFormatter
       }],
       data: csv
   });
