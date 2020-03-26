@@ -134,7 +134,10 @@ var descriptionFormatter  = function (value, row, index) {
 };
 
 var detailDescrptionFormatter  = function (value, row, index) {
+	console.log(value);
+	console.log(row);
 	return value;
+	
 };
 
 $(document).ready(function() {
