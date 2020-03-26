@@ -2,6 +2,9 @@
 
 Very simple porject: csv 2 bootstrap table js
 
+Demo here: https://collaer.github.io/csv2table/
+
+
 ## Main open source lib used:
 
 * https://jquery.com/
