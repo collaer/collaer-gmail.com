@@ -7,6 +7,38 @@ String.prototype.trunc = String.prototype.trunc ||
           return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
       };
 
+var dataTableIsLoaded=functio() {
+  
+  countries = [];
+  categories = [];
+  $.each(csv, function(i,d) { 
+  	//console.log(d);
+	if(! countries.includes(d.country)) {
+	  countries.push(d.country);
+	  $("#country")
+   		.append('<option val="' + d.country + '">'+ d.country + '</option>');
+	}
+	if(! categories.includes(d.category)) {
+	  categories.push(d.category);
+	  $("#category")
+   		.append('<option val="' + d.category + '">'+ d.category + '</option>');
+	}
+  });
+	
+	$("#country").selectpicker('refresh');
+	$("#category").selectpicker('refresh');
+
+	$( "#country" ).change(function() {
+		refreshFilter();
+	});
+
+	$( "#category" ).change(function() {
+		refreshFilter();
+	});
+	
+	//refreshFilter();
+};
+
 var processData=function(data) {
   csv = $.csv.toObjects(data);
 	
@@ -77,41 +109,12 @@ var processData=function(data) {
 	detailFormatter: detailDescriptionFormatter
       }],
       data: csv
+      ,onLoadSuccess: dataTableIsLoaded
   });
-  
-  countries = [];
-  categories = [];
-  $.each(csv, function(i,d) { 
-  	//console.log(d);
-	if(! countries.includes(d.country)) {
-	  countries.push(d.country);
-	  $("#country")
-   		.append('<option val="' + d.country + '">'+ d.country + '</option>');
-	}
-	if(! categories.includes(d.category)) {
-	  categories.push(d.category);
-	  $("#category")
-   		.append('<option val="' + d.category + '">'+ d.category + '</option>');
-	}
-  });
-	
-	$("#country").selectpicker('refresh');
-	$("#category").selectpicker('refresh');
 
-	$( "#country" ).change(function() {
-		refreshFilter();
-	});
-
-	$( "#category" ).change(function() {
-		refreshFilter();
-	});
-	
-	refreshFilter();
 };
 
 var refreshFilter = function() {
-	//console.log($("#country").val());
-	//console.log($("#category").val());
 	var country = $("#country").val();
 	var category = $("#category").val();
 	filters = {};
