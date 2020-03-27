@@ -160,7 +160,7 @@ var CategoriesFormater = function(data) {
     });*/
     i=0
 	console.log(keysSorted);
-    $.each(keysSorted, function(key) { 
+    $.each(keysSorted, function(position, key) { 
     if (i > 2) {
 	    return;
     }
