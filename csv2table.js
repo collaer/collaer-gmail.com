@@ -1,12 +1,12 @@
 var csv;
-var countries;
-var categories;
+
+var countries = [];
+var categories = [];
 
 String.prototype.trunc = String.prototype.trunc ||
       function(n){
           return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
       };
-
 var processData=function(data) {
   csv = $.csv.toObjects(data);
 	
@@ -26,6 +26,8 @@ var processData=function(data) {
       detailView: true,
       detailViewByClick: true,
       detailViewIcon: true,
+      detailFormatter: detailDescriptionFormatter,
+
       columns: [{
         field: 'organization',
         title: 'Organization',
@@ -33,20 +35,24 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true,
         formatter: linkAccount,
-	footerFormatter: TotalLabelFormater
+	footerFormatter: TotalFormater,
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'category',
         title: 'Category',
         width: '20',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: TotalFormater
+	footerFormatter: CategoriesFormater,
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'country',
         title: 'Country',
         width: '10',
         widthUnit: '%',
-        sortable: true
+        sortable: true,
+	footerFormatter: CountriesFormater,
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'description',
         title: 'Description',
@@ -62,6 +68,7 @@ var processData=function(data) {
 	title: 'Additional link',
         width: '10',
         widthUnit: '%',
+	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'url',
 	title: 'url',
@@ -71,7 +78,12 @@ var processData=function(data) {
       }],
       data: csv
   });
-  
+	visible: false,
+	detailFormatter: detailDescriptionFormatter
+      }],
+      data: csv
+  });
+
   countries = [];
   categories = [];
   $.each(csv, function(i,d) { 
@@ -90,19 +102,19 @@ var processData=function(data) {
 	
 	$("#country").selectpicker('refresh');
 	$("#category").selectpicker('refresh');
-	
 	$( "#country" ).change(function() {
 		refreshFilter();
 	});
 
 	$( "#category" ).change(function() {
-	 	refreshFilter();
+		refreshFilter();
 	});
+	refreshFilter();
+	
 };
 
 var refreshFilter = function() {
-	//console.log($("#country").val());
-	//console.log($("#category").val());
+
 	var country = $("#country").val();
 	var category = $("#category").val();
 	filters = {};
@@ -127,12 +139,53 @@ var linkAccount = function (value, row, index) {
 		'</a>'].join('');
 };
 
-var TotalLabelFormater = function(data) {
-    return 'Total';
+var TotalFormater = function(data) {
+    return 'Total: ' + data.length;
 };
 
-var TotalFormater = function(data) {
-    return data.length;
+var CountriesFormater = function(data) {
+  var currentData = $("#datatable").bootstrapTable('getData');
+  var countries_f = [];
+  $.each(currentData, function(i,d) { 
+  	//console.log(d);
+	if(! countries_f.includes(d.country)) {
+	  countries_f.push(d.country);
+	}
+  });	
+    return countries_f.length + ' countries';
+ };
+
+var CategoriesFormater = function(data) {
+    var currentData = $("#datatable").bootstrapTable('getData');
+  var categories_f = [];
+  $.each(currentData, function(i,d) { 
+  	//console.log(d);
+	if(! categories_f.includes(d.category)) {
+	  categories_f.push(d.category);
+	}
+  });		
+    var cata = {};
+    $.each(currentData, function(i, record) { 
+	   cata[record.category] = (cata[record.category] ? cata[record.category] + 1 : 1);
+    });
+    var text = categories_f.length + ' categories.';
+    //https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
+    var keysSorted = Object.keys(cata).sort(function(a,b){return cata[b]-cata[a]});
+    /*$.each(cata, function(i, nb) { 
+	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
+    });*/
+    i=0
+	//console.log(keysSorted);
+    $.each(keysSorted, function(position, key) { 
+    if (i > 2) {
+	    return;
+    }
+	    //console.log(key);
+    text += "<br />" + key.toString().trunc(18) + ": " + cata[key];
+	    
+    i++;
+    });
+    return text;
  };
 
 var descriptionFormatter  = function (value, row, index) {
