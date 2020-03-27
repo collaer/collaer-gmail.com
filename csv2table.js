@@ -150,16 +150,19 @@ var CategoriesFormater = function(data) {
     $.each(currentData, function(i, record) { 
 	   cata[record.category] = (cata[record.category] ? cata[record.category] + 1 : 1);
     });
-    var text = countries.length + ' categories.';;
+    var text = countries.length + ' categories.';
+    //https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
     var keysSorted = Object.keys(cata).sort(function(a,b){return list[a]-list[b]});
     /*$.each(cata, function(i, nb) { 
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });*/
     i=0
+	console.log(keysSorted);
     $.each(keysSorted, function(key) { 
     if (i > 2) {
 	    return;
     }
+	    console.log(key);
     text += "<br />" + key.trunc(28) + ": " + cata[key];
 	    
     i++;
