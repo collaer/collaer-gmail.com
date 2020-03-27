@@ -8,7 +8,7 @@ String.prototype.trunc = String.prototype.trunc ||
       };
 
 var dataTableIsLoaded = function() {
-  
+  console.log("loaded event");
   countries = [];
   categories = [];
   $.each(csv, function(i,d) { 
