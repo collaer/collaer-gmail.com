@@ -174,12 +174,12 @@ var CategoriesFormater = function(data) {
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });*/
     i=0
-	console.log(keysSorted);
+	//console.log(keysSorted);
     $.each(keysSorted, function(position, key) { 
     if (i > 2) {
 	    return;
     }
-	    console.log(key);
+	    //console.log(key);
     text += "<br />" + key.toString().trunc(18) + ": " + cata[key];
 	    
     i++;
