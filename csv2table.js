@@ -7,7 +7,7 @@ String.prototype.trunc = String.prototype.trunc ||
           return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
       };
 
-var dataTableIsLoaded=functio() {
+var dataTableIsLoaded = function() {
   
   countries = [];
   categories = [];
