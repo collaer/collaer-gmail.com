@@ -165,7 +165,7 @@ var CategoriesFormater = function(data) {
 	    return;
     }
 	    console.log(key);
-    text += "<br />" + key.toString().trunc(28) + ": " + cata[key];
+    text += "<br />" + key.toString().trunc(18) + ": " + cata[key];
 	    
     i++;
     });
