@@ -155,7 +155,7 @@ var CategoriesFormater = function(data) {
     /*$.each(cata, function(i, nb) { 
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });*/
-    i=;
+    i=0
     $.each(keysSorted, function(key) { 
     if (i > 2) {
 	    return;
