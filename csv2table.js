@@ -151,7 +151,7 @@ var CategoriesFormater = function(data) {
 	   cata[record.category] = (cata[record.category] ? cata[record.category] + 1 : 1);
     });
     var text = countries.length + ' categories.';;
-    var keysSorted = cata.keys(list).sort(function(a,b){return list[a]-list[b]});
+    var keysSorted = Object.keys(cata).sort(function(a,b){return list[a]-list[b]});
     /*$.each(cata, function(i, nb) { 
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });*/
