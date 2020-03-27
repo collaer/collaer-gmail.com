@@ -2,6 +2,7 @@ var csv;
 
 var countries = [];
 var categories = [];
+var sources = [];
 
 
 String.prototype.trunc = String.prototype.trunc ||
