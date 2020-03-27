@@ -36,7 +36,7 @@ var dataTableIsLoaded = function() {
 		refreshFilter();
 	});
 	
-	//refreshFilter();
+	refreshFilter();
 };
 
 var processData=function(data) {
@@ -155,7 +155,7 @@ var CategoriesFormater = function(data) {
     });
     var text = countries.length + ' categories.';
     //https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
-    var keysSorted = Object.keys(cata).sort(function(a,b){return list[a]-list[b]});
+    var keysSorted = Object.keys(cata).sort(function(a,b){return cata[a]-cata[b]});
     /*$.each(cata, function(i, nb) { 
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });*/
