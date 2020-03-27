@@ -109,7 +109,10 @@ var processData=function(data) {
 	detailFormatter: detailDescriptionFormatter
       }],
       data: csv
-      ,onLoadSuccess: dataTableIsLoaded
+      ,onLoadSuccess: function() {
+	      dataTableIsLoaded();
+	      console.log(" 2 " );
+      }
   });
 
 };
