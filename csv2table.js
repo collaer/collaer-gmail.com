@@ -95,15 +95,26 @@ var processData=function(data) {
 	  $("#category")
    		.append('<option val="' + d.category + '">'+ d.category + '</option>');
 	}
+	if(! sources.includes(d.source)) {
+	  sources.push(d.source);
+	  $("#source")
+   		.append('<option val="' + d.source + '">'+ d.source + '</option>');
+	}
   });
 	
 	$("#country").selectpicker('refresh');
 	$("#category").selectpicker('refresh');
-	$( "#country" ).change(function() {
+	$("#source").selectpicker('refresh');
+	
+	$("#country" ).change(function() {
 		refreshFilter();
 	});
 
 	$( "#category" ).change(function() {
+		refreshFilter();
+	});
+	
+	$( "#source" ).change(function() {
 		refreshFilter();
 	});
 	refreshFilter();
