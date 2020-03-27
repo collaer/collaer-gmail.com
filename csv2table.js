@@ -143,18 +143,33 @@ var TotalFormater = function(data) {
 };
 
 var CountriesFormater = function(data) {
-    return countries.length + ' countries';
+  var currentData = $("#datatable").bootstrapTable('getData');
+  var countries_f = [];
+  $.each(currentData, function(i,d) { 
+  	//console.log(d);
+	if(! countries_f.includes(d.country)) {
+	  countries_f.push(d.country);
+	}
+  });	
+    return countries_f.length + ' countries';
  };
 
 var CategoriesFormater = function(data) {
     var currentData = $("#datatable").bootstrapTable('getData');
+  var categories_f = [];
+  $.each(currentData, function(i,d) { 
+  	//console.log(d);
+	if(! categories_f.includes(d.category)) {
+	  categories_f.push(d.category);
+	}
+  });		
     var cata = {};
     $.each(currentData, function(i, record) { 
 	   cata[record.category] = (cata[record.category] ? cata[record.category] + 1 : 1);
     });
-    var text = countries.length + ' categories.';
+    var text = categories_f.length + ' categories.';
     //https://stackoverflow.com/questions/1069666/sorting-object-property-by-values
-    var keysSorted = Object.keys(cata).sort(function(a,b){return cata[a]-cata[b]});
+    var keysSorted = Object.keys(cata).sort(function(a,b){return cata[b]-cata[a]});
     /*$.each(cata, function(i, nb) { 
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
     });*/
