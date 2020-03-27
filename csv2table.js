@@ -150,9 +150,19 @@ var CategoriesFormater = function(data) {
     $.each(currentData, function(i, record) { 
 	   cata[record.category] = (cata[record.category] ? cata[record.category] + 1 : 1);
     });
-    var text = "";
-    $.each(cata, function(i, nb) { 
+    var text = countries.length + ' categories.';;
+    var keysSorted = cata.keys(list).sort(function(a,b){return list[a]-list[b]});
+    /*$.each(cata, function(i, nb) { 
 	    text += (text ? "<br />": "") + i.trunc(28) + ": " + nb;
+    });*/
+    i=;
+    $.each(keysSorted, function(key) { 
+    if (i > 2) {
+	    return;
+    }
+    text += "<br />" + key.trunc(28) + ": " + cata[key];
+	    
+    i++;
     });
     return text;
  };
