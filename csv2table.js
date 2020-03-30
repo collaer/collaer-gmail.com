@@ -82,12 +82,7 @@ var processData=function(data) {
       }],
       data: csv
   });
-	visible: false,
-	detailFormatter: detailDescriptionFormatter
-      }],
-      data: csv
-  });
-
+	
   countries = [];
   categories = [];
   sources = [""];
