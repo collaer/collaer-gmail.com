@@ -219,7 +219,7 @@ var descriptionFormatter  = function (value, row, index) {
 };
 
 var detailDescriptionFormatter  = function (value, row, index) {
-	return row.description;
+	return row.description.replace(/(\r\n|\n|\r)/gm,"< br/>");
 };
 
 $(document).ready(function() {
