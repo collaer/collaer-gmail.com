@@ -2,6 +2,8 @@ var csv;
 
 var countries = [];
 var categories = [];
+var sources = [];
+
 
 
 String.prototype.trunc = String.prototype.trunc ||
@@ -36,7 +38,7 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true,
         formatter: linkAccount,
-	footerFormatter: TotalFormater,
+	footerFormatter: TotalFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'category',
@@ -44,7 +46,7 @@ var processData=function(data) {
         width: '20',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: CategoriesFormater,
+	footerFormatter: CategoriesFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'country',
@@ -52,7 +54,7 @@ var processData=function(data) {
         width: '10',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: CountriesFormater,
+	footerFormatter: CountriesFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'description',
@@ -69,6 +71,7 @@ var processData=function(data) {
 	title: 'Additional link',
         width: '10',
         widthUnit: '%',
+	formatter: LinkFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'url',
@@ -79,14 +82,10 @@ var processData=function(data) {
       }],
       data: csv
   });
-	visible: false,
-	detailFormatter: detailDescriptionFormatter
-      }],
-      data: csv
-  });
-
+	
   countries = [];
   categories = [];
+  sources = [""];
   $.each(csv, function(i,d) { 
   	//console.log(d);
 	if(! countries.includes(d.country)) {
@@ -99,17 +98,30 @@ var processData=function(data) {
 	  $("#category")
    		.append('<option val="' + d.category + '">'+ d.category + '</option>');
 	}
+	if(! sources.includes(d.source)) {
+	  sources.push(d.source);
+	  $("#source")
+   		.append('<option val="' + d.source + '">'+ d.source + '</option>');
+	}
   });
 	
 	$("#country").selectpicker('refresh');
 	$("#category").selectpicker('refresh');
-	$( "#country" ).change(function() {
+
+	$("#source").selectpicker('refresh');
+	
+	$("#country" ).change(function() {
 		refreshFilter();
 	});
 
 	$( "#category" ).change(function() {
 		refreshFilter();
 	});
+	
+	$( "#source" ).change(function() {
+		refreshFilter();
+	});
+
 	refreshFilter();
 	
 };
@@ -118,12 +130,16 @@ var refreshFilter = function() {
 
 	var country = $("#country").val();
 	var category = $("#category").val();
+	var source = $("#source").val();
 	filters = {};
 	if (country != 0) {
 		filters["country"] = country;
 	};
 	if (category != 0) {
 		filters["category"] = category;
+	};
+	if (source != 0) {
+		filters["source"] = source;
 	};
 	$('#datatable').bootstrapTable('filterBy', filters);
 	//console.log(filters);
@@ -140,11 +156,22 @@ var linkAccount = function (value, row, index) {
 		'</a>'].join('');
 };
 
-var TotalFormater = function(data) {
+var LinkFormatter = function(value, row, index) {
+    return [
+	'<a href="http://',
+	value,
+	'" title="Open ',
+	value,
+	' in antoher window." target="_blank">',
+	value,
+	'</a>'].join('');
+}
+
+var TotalFormatter = function(data) {
     return 'Total: ' + data.length;
 };
 
-var CountriesFormater = function(data) {
+var CountriesFormatter = function(data) {
   var currentData = $("#datatable").bootstrapTable('getData');
   var countries_f = [];
   $.each(currentData, function(i,d) { 
@@ -156,7 +183,7 @@ var CountriesFormater = function(data) {
     return countries_f.length + ' countries';
  };
 
-var CategoriesFormater = function(data) {
+var CategoriesFormatter = function(data) {
     var currentData = $("#datatable").bootstrapTable('getData');
   var categories_f = [];
   $.each(currentData, function(i,d) { 
@@ -194,7 +221,7 @@ var descriptionFormatter  = function (value, row, index) {
 };
 
 var detailDescriptionFormatter  = function (value, row, index) {
-	return row.description;
+	return row.description.replace(/(\r\n|\n|\r)/gm,"<br />");
 };
 
 $(document).ready(function() {
