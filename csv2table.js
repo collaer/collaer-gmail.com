@@ -37,7 +37,7 @@ var processData=function(data) {
         widthUnit: '%',
         sortable: true,
         formatter: linkAccount,
-	footerFormatter: TotalFormater,
+	footerFormatter: TotalFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'category',
@@ -45,7 +45,7 @@ var processData=function(data) {
         width: '20',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: CategoriesFormater,
+	footerFormatter: CategoriesFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'country',
@@ -53,7 +53,7 @@ var processData=function(data) {
         width: '10',
         widthUnit: '%',
         sortable: true,
-	footerFormatter: CountriesFormater,
+	footerFormatter: CountriesFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'description',
@@ -70,6 +70,7 @@ var processData=function(data) {
 	title: 'Additional link',
         width: '10',
         widthUnit: '%',
+	formatter: LinkFormatter,
 	detailFormatter: detailDescriptionFormatter
       }, {
         field: 'url',
@@ -153,11 +154,22 @@ var linkAccount = function (value, row, index) {
 		'</a>'].join('');
 };
 
-var TotalFormater = function(data) {
+var LinkFormatter = function(value, row, index) {
+    return [
+	'<a href="http://',
+	value,
+	'" title="Open ',
+	value,
+	' in antoher window." target="_blank">',
+	value,
+	'</a>'].join('');
+}
+
+var TotalFormatter = function(data) {
     return 'Total: ' + data.length;
 };
 
-var CountriesFormater = function(data) {
+var CountriesFormatter = function(data) {
   var currentData = $("#datatable").bootstrapTable('getData');
   var countries_f = [];
   $.each(currentData, function(i,d) { 
@@ -169,7 +181,7 @@ var CountriesFormater = function(data) {
     return countries_f.length + ' countries';
  };
 
-var CategoriesFormater = function(data) {
+var CategoriesFormatter = function(data) {
     var currentData = $("#datatable").bootstrapTable('getData');
   var categories_f = [];
   $.each(currentData, function(i,d) { 
