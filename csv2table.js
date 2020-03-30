@@ -5,6 +5,7 @@ var categories = [];
 var sources = [];
 
 
+
 String.prototype.trunc = String.prototype.trunc ||
       function(n){
           return (this.length > n) ? this.substr(0, n-1) + '&hellip;' : this;
@@ -77,6 +78,10 @@ var processData=function(data) {
 	title: 'url',
         width: '0.1',
         widthUnit: '%',
+	visible: false
+      }],
+      data: csv
+  });
 	visible: false,
 	detailFormatter: detailDescriptionFormatter
       }],
@@ -107,6 +112,7 @@ var processData=function(data) {
 	
 	$("#country").selectpicker('refresh');
 	$("#category").selectpicker('refresh');
+
 	$("#source").selectpicker('refresh');
 	
 	$("#country" ).change(function() {
@@ -120,6 +126,7 @@ var processData=function(data) {
 	$( "#source" ).change(function() {
 		refreshFilter();
 	});
+
 	refreshFilter();
 	
 };
