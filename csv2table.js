@@ -84,7 +84,7 @@ var processData=function(data) {
 
   countries = [];
   categories = [];
-  sources = [];
+  sources = [""];
   $.each(csv, function(i,d) { 
   	//console.log(d);
 	if(! countries.includes(d.country)) {
