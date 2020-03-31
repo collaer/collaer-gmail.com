@@ -3,7 +3,7 @@ var csv;
 var countries = [];
 var categories = [];
 var sources = [];
-
+var showDetails = False;
 
 
 String.prototype.trunc = String.prototype.trunc ||
@@ -122,6 +122,12 @@ var processData=function(data) {
 		refreshFilter();
 	});
 
+	$( "#source" .on("click", function() {
+		showDetails = showDetails == False;
+		refreshFilter();
+	});
+	more_detail
+
 	refreshFilter();
 	
 };
@@ -217,7 +223,10 @@ var CategoriesFormatter = function(data) {
  };
 
 var descriptionFormatter  = function (value, row, index) {
-	return value.trunc(133);
+	if (showDetails)
+		return value;
+	else
+		return value.trunc(133);
 };
 
 var detailDescriptionFormatter  = function (value, row, index) {
