@@ -122,11 +122,10 @@ var processData=function(data) {
 		refreshFilter();
 	});
 
-	$( "#source" .on("click", function() {
+	$( "#more_detail").on("click", function() {
 		showDetails = showDetails == False;
 		refreshFilter();
 	});
-	more_detail
 
 	refreshFilter();
 	
