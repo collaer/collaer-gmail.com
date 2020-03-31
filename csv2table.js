@@ -123,7 +123,7 @@ var processData=function(data) {
 	});
 
 	$( "#more_detail").on("click", function() {
-		showDetails = showDetails == False;
+		showDetails = showDetails == false;
 		refreshFilter();
 	});
 
