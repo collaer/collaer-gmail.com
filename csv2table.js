@@ -235,7 +235,7 @@ var detailDescriptionFormatter  = function (value, row, index) {
 $(document).ready(function() {
   $.ajax({
         type: "GET",
-        url: "data/sample.csv",
+        url: "https://idb-lab-test.maps.arcgis.com/sharing/rest/content/items/70776ec1e2574ab88f75aad69bdabda9/data",
         dataType: "text",
         success: function(data) {
           processData(data);
